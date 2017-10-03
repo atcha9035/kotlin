@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2016 JetBrains s.r.o.
+ * Copyright 2010-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.kotlin.types.FlexibleTypeImpl;
 import org.jetbrains.kotlin.utils.ExceptionUtilsKt;
+import org.junit.After;
 import org.junit.Assert;
 
 import java.io.File;
@@ -134,8 +135,13 @@ public abstract class KtUsefulTestCase extends TestCase {
         application = null;
     }
 
+    @After
+    public void afterTest() {
+        resetApplicationToNull(application);
+    }
+
     public static void resetApplicationToNull(Application old) {
-        if (old != null) return;
+        //if (old != null) return;
         resetApplicationToNull();
     }
 
